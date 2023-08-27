@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/donor_hospital.css')}}">
+    <script>
+        function validate(){
+            var name=document.getElementById("Name").value;
+            var phoneNumber=document.getElementById("phoneNumber").value;
+            var group=document.getElementById("group").value;
+            var pin=document.getElementById("pin").value;
+
+            var rname=/^[A-Za-z ]+$/;
+            var rphoneNumber=/^[9876]\d{9}$/;
+            var rpin=/^\d{6}$/;
+            if(group=="None"){
+                alert("please fill group");
+                return false;
+            }
+
+            if (rname.test(name) && rphoneNumber.test(phoneNumber) && rpin.test(pin)){
+                return true;
+            }
+            else{
+                alert("please fill details carefully:name - must contain only aplhabets and spaces,phone must start with (9,8,7,6) and of length 10 only digits,pincode must be of length 6 only digits");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="message">
+            {{msg}}
+        </div>
+        <h2>Donate the Blood</h2>
+        <button class="back-button"><a href="{{ url_for('donor_home')}}" style="text-decoration: none;color: white;">Back</a></button>
+        <form onsubmit="return validate()" action="slot" method="POST" autocomplete="off">
+
+            <label for="Name">Donor Name</label>
+            <input type="text" id="Name" name="Name" required>
+
+            <label for="hospitalName">Hospital Name</label>
+            <input type="text" id="hospitalName" name="hospitalName" value="{{hospital_name}}" placeholder="{{hospital_name}}" onfocus="return false">
+
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="{{email}}" value="{{email}}" onfocus="return false">
+
+            <label for="group">Blood Group</label>
+            <select name="group" id="group">
+                <option value='None' selected>Select</option>
+                <option value="O-">O-</option>
+                <option value="O+">O+</option>
+                <option value="AB-">AB-</option>
+                <option value="AB+">AB+</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+            </select>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="Address" required>
+
+            <label for="pin">Pin Code</label>
+            <input type="text" id="pin" name="pin" required>
+            
+            <input type="submit" value="Book Slot">
+        </form>
+    </div>
+    <script>
+        document.getElementById('hospitalName').addEventListener('keydown', function(event) {
+            event.preventDefault();
+        });
+        document.getElementById('email').addEventListener('keydown', function(event) {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

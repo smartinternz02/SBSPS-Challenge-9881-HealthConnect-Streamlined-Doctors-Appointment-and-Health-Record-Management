@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+    </head>
+    <body>
+        <nav>
+            <label class="logo">HEALTH CONNECT</label>
+        </nav>
+        <div class="main">
+            <div class="message">
+                {{msg}}
+            </div>
+            <div class="container">
+                <h1>Login</h1>
+                <form action="login" method="POST" autocomplete="off">
+                <div class="inputs">
+                <div class="input-group">
+                    <input type="text" placeholder="Email" name="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" name="pwd" id="password" required>
+                </div>
+                <div class="input-group">
+                    <select name="type" id="type">
+                        <option value="None" selected>Login As</option>
+                        <option value="doctor">DOCTOR</option>
+                        <option value="patient">PATIENT</option>
+                        <option value="donor">DONOR</option>
+                        <option value="receptionist">RECEPTIONIST</option>
+                    </select>
+                </div>
+                </div>
+                <button type="submit" name="submit" value="submit">Login</button>
+                </form>
+                <div class="links">
+                    <a href="{{url_for('donor_register')}}">Register As Donor</a>
+                    <span class="separator">|</span>
+                    <a href="{{url_for('patient_register')}}">Register As Patient</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>                   

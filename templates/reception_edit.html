@@ -1,0 +1,68 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/reception.css')}}">
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <label class="logo">{{session['email']}}</label>
+            <ul>
+                <li><a href="{{url_for('reception_home')}}">HOME</a></li>
+                <li><a href="{{url_for('reception_check_by_date')}}">CHECK BY DATE</a></li>
+                <li><a href="{{url_for('reception_donor')}}">BLOOD DONOR</a></li>
+                <li><a href="{{url_for('reception_bank')}}">BLOOD BANK</a></li>
+                <li><a class="active" href="{{url_for('reception_edit')}}">BLOOD EDIT</a></li>
+                <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="message">
+                {{msg}}
+            </div>
+            <center><h1>UPDATE THE BLOOD DETAILS</h1></center>
+            <form  action="edit_blood" method="POST" autocomplete="off">
+                <div class="inputs">
+                    <div class="input-group">
+                       <span style="margin-left: 195px;">O-POSITIVE:</span><input type="number" placeholder="O+" name="o+" min="0" max="999" required  value="{{data[0]['OP']}}" >
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 190px;">O-NEGATIVE:</span><input type="number" placeholder="O-" name="o-" min="0" max="999" required value="{{data[0]['ON']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 200px;">A-POSITIVE:</span><input type="number" placeholder="A+" name="a+" min="0" max="999" required value="{{data[0]['AP']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 195px;">A-NEGATIVE:</span><input type="number" placeholder="A-" name="a-" min="0" max="999" required value="{{data[0]['AN']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 200px;">B-POSITIVE:</span><input type="number" placeholder="B+" name="b+" min="0" max="999" required value="{{data[0]['BP']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 195px;">B-NEGATIVE:</span><input type="number" placeholder="B-" name="b-" min="0" max="999" required value="{{data[0]['BN']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 190px;">AB-POSITIVE:</span><input type="number" placeholder="AB+" name="ab+" min="0" max="999" required value="{{data[0]['ABP']}}">
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 185px;">AB-NEGATIVE:</span><input type="number" placeholder="AB-" name="ab-" min="0" max="999" required value="{{data[0]['ABN']}}">
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="UPDATE" style="background-color: #076593;color: #fff;
+                padding: 10px 20px;
+                border: none;
+                margin-left: 300px;
+                border-radius: 5px;
+                cursor: pointer;">
+            </form>
+        </div>
+        
+    </body>
+</html>

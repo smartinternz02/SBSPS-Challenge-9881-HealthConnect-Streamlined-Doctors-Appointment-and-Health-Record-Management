@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/donor_register.css')}}">
+        <script src="{{url_for('static',filename='js/donor_register.js')}}"></script>
+    </head>
+    <body>
+        <nav>
+            <label class="logo">HEALTH CONNECT</label>
+        </nav>
+        <div class="lead-main">
+            <div class="message">
+                {{msg}}
+            </div>
+            <h1>Register As DONOR</h1>
+            <form onsubmit="return validateForm()" action="donor_register" method="POST" autocomplete="off">
+                <div class="inputs">
+                    <div class="input-group">
+                        <input type="text" placeholder="Name" name="name" id="name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" name="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                    </div>
+                    <div class="input-group">
+                        <select name="gender" id="type">
+                            <option value="-1" selected>Gender</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" name="submit" value="submit">Register</button>
+            </form>
+            <div class="links">
+                <a href="{{url_for('login')}}">Login</a>
+            </div>
+        </div>
+    </body>
+</html>

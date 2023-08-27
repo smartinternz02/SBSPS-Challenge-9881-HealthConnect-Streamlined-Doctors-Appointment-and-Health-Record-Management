@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/patient_history.css')}}">
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <label class="logo">HEALTH CONNECT</label>
+            <ul>
+                <li><a href="{{url_for('patient_home')}}">HOME</a></li>
+                <li><a href="{{url_for('patient_search')}}">SEARCH</a></li>
+                <li><a href="{{url_for('patient_bank')}}">BLOOD BANK</a></li>
+                <li><a class="active" href="{{url_for('patient_history')}}">HISTORY</a></li>
+                <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <table > 
+                <caption>History</caption>
+                <tbody> 
+                    <tr> 
+                        <th>Application ID</th> 
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
+                        <th>Hospital</th>
+                        <th>Date</th>
+                        <th>Time</th>    
+                        <th>Disease</th>        
+                    </tr>
+                    {% for entry in data %}
+                    <tr>
+                        <form action="appointment" method="POST">
+                        <td>{{ entry['ID'].strip() }}</td>
+                        <td>{{ entry['PATIENT_NAME'].strip() }}</td>
+                        <td>{{ entry['DOCTOR_NAME'].strip() }}</td>
+                        <td>{{ entry['HOSPITAL'].strip() }}</td>
+                        <td>{{ entry['DATE'] }}</td>
+                        <td>{{ entry['SLOT'].strip() }}</td>
+                        <td>{{ entry['DISEASE'].strip() }}</td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table> 
+        </div>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/patient_search.css')}}">
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <label class="logo">HEALTH CONNECT</label>
+            <ul>
+                <li><a href="{{url_for('patient_home')}}">HOME</a></li>
+                <li><a class="active" href="{{url_for('patient_search')}}">SEARCH</a></li>
+                <li><a href="{{url_for('patient_bank')}}">BLOOD BANK</a></li>
+                <li><a href="{{url_for('patient_history')}}">HISTORY</a></li>
+                <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="message">
+                {{msg}}
+            </div>
+            <h2>ENTER DISEASE</h2>
+            <form action="patient_search" method="POST" autocomplete="off">
+                <input type="text" id="disease" name="disease" placeholder="Enter Here" required>
+                <input type="submit" value="GET DETAILS">
+            </form>
+            <table > 
+                <caption>Doctors Available</caption>
+                <tbody> 
+                    <tr> 
+                        <th>Hospital</th>
+                        <th>DOCTOR</th>    
+                        <th>EXPERIENCE</th> 
+                        <th>FEE</th>   
+                        <th>DISEASE</th>
+                        <th>ACTION</th>          
+                    </tr>
+                    {% for entry in data %}
+                    <tr>
+                        <form action="/search" method="POST">
+                        <td>{{ entry['HOSPITAL'].strip() }}</td>
+                        <td>{{ entry['NAME'].strip() }}</td>
+                        <td>{{ entry['EXPERIENCE'] }}</td>
+                        <td>{{ entry['FEE'] }}</td>
+                        <td>{{ entry['SPECIALIZATION'].strip() }}</td>
+                        <input type="hidden" name="hospital" value="{{entry['HOSPITAL'].strip()}}">
+                        <td><button type="submit" name="book" value="{{ entry['NAME'] }}" class="button-link">BOOK</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table> 
+        </div>
+    </body>
+</html>
