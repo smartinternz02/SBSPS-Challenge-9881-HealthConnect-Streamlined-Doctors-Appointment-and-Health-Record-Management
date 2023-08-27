@@ -261,7 +261,7 @@ def book(id):
                 ibm_db.bind_param(stmt,10,link)
                 ibm_db.execute(stmt)  
                 msg="you have successsfully booked slot , pls go back!"        
-                return render_template("appointment.html",msg=msg,email=session['email'])
+                return render_template("appointment.html",msg=msg,email=session['email'],doctor_name=d_name,hospital_name=hospital,application_id=id)
             msg="sry the slot is not available pls book another slot!"
             return render_template("appointment.html",doctor_name=d_name,hospital_name=session['hospital_name'],application_id=id,email=session['email'],msg=msg)
     msg="you signed out pls! login in"
