@@ -13,3 +13,16 @@ M PRADEEP KUMAR(Team Member):
 2) Get Started with Enterprise Data Science  : https://www.credly.com/badges/d96b34ca-498c-4240-9257-40d0143b6b3c
 
 Deployment Link : https://ibmhc-20b91a05f8-dev.apps.sandbox-m4.g2pi.p1.openshiftapps.com/
+
+Receptionist Credentials (Example): 
+
+1) Email : HOSPITAL 1  Password: 1234
+   
+2) Email : HOSPITAL 2  Password: 1234
+
+Doctor Credentials (Example):
+
+1) Email : ram@gmail.com     Password: 1234
+   
+2) Email : krishna@gmail.com Password: 1234
+
