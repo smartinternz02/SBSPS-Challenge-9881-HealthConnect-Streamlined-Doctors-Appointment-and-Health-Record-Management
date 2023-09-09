@@ -16,13 +16,13 @@ Deployment Link : https://ibmhc-20b91a05f8-dev.apps.sandbox-m4.g2pi.p1.openshift
 
 Receptionist Credentials (Example): 
 
-1) Email : HOSPITAL 1  Password: 1234
+1) Email : HOSPITAL 1 , Password: 1234
    
-2) Email : HOSPITAL 2  Password: 1234
+2) Email : HOSPITAL 2 , Password: 1234
 
 Doctor Credentials (Example):
 
-1) Email : ram@gmail.com     Password: 1234
+1) Email : ram@gmail.com     , Password: 1234
    
-2) Email : krishna@gmail.com Password: 1234
+2) Email : krishna@gmail.com , Password: 1234
 
